@@ -1,0 +1,201 @@
+<?xml version="1.0" ?>
+<simulator_config>
+  <modulators>
+    <modulator carrier_freq_hz="5737.3046875" carrier_amplitude="1.0" carrier_phase_deg="0.0" samples_per_symbol="200" name="Modulator" gauss_bt="0.5" gauss_filter_width="1.0" sample_rate="2000000.0" modulation_type="GFSK" index="0" parameters="0.0,31000.0" bits_per_symbol="1"/>
+  </modulators>
+  <decodings>
+    <decoding>'Non Return To Zero (NRZ)', </decoding>
+    <decoding>'Non Return To Zero Inverted (NRZ-I)', 'Invert', </decoding>
+    <decoding>'Manchester I', 'Edge Trigger', </decoding>
+    <decoding>'Manchester II', 'Edge Trigger', 'Invert', </decoding>
+    <decoding>'Differential Manchester', 'Edge Trigger', 'Differential Encoding', </decoding>
+    <decoding>'H0meMatic', 'Cut before/after', '0;10101010', 'Remove Data Whitening (CC1101)', '0xe9cae9ca;0x21;1', 'External Program', 'scripts/homematic d;scripts/homematic e', </decoding>
+  </decodings>
+  <participants>
+    <participant name="Attacker" shortname="A" address_hex="" color_index="0" id="3f28079e-37e8-46b5-94fc-142e7ec3bd49" relative_rssi="0" simulate="1"/>
+    <participant name="CCU" shortname="C" address_hex="" color_index="1" id="7956ab72-ed42-4363-a793-08e4f6bdadf4" relative_rssi="1" simulate="0"/>
+    <participant name="Device" shortname="D" address_hex="" color_index="2" id="b92bd0da-a493-4ed6-b968-e64bf3e00abe" relative_rssi="2" simulate="0"/>
+  </participants>
+  <simulator_rx_conf>
+    <antenna_index>-1.0</antenna_index>
+    <apply_dc_correction>True</apply_dc_correction>
+    <bandwidth>2000000.0</bandwidth>
+    <baseband_gain>20.0</baseband_gain>
+    <bias_tee_enabled>False</bias_tee_enabled>
+    <center>0.02</center>
+    <decoding_name>Non Return To Zero (NRZ)</decoding_name>
+    <freq_correction>0</freq_correction>
+    <frequency>868300000.0</frequency>
+    <gain>14.0</gain>
+    <if_gain>16.0</if_gain>
+    <modulation_index>1.0</modulation_index>
+    <name>RTL-SDR</name>
+    <noise>1.0</noise>
+    <num_sending_repeats>0</num_sending_repeats>
+    <rx_antenna_index>-1</rx_antenna_index>
+    <rx_baseband_gain>14</rx_baseband_gain>
+    <rx_gain>49</rx_gain>
+    <rx_if_gain>16</rx_if_gain>
+    <sample_rate>2000000.0</sample_rate>
+    <samples_per_symbol>100.0</samples_per_symbol>
+    <tolerance>5.0</tolerance>
+  </simulator_rx_conf>
+  <simulator_tx_conf>
+    <antenna_index>-1.0</antenna_index>
+    <apply_dc_correction>True</apply_dc_correction>
+    <bandwidth>2000000.0</bandwidth>
+    <baseband_gain>22.0</baseband_gain>
+    <bias_tee_enabled>False</bias_tee_enabled>
+    <freq_correction>0</freq_correction>
+    <frequency>868300000.0</frequency>
+    <gain>40.0</gain>
+    <if_gain>33.0</if_gain>
+    <name>HackRF</name>
+    <num_sending_repeats>0</num_sending_repeats>
+    <sample_rate>2000000.0</sample_rate>
+    <tx_antenna_index>-1</tx_antenna_index>
+    <tx_baseband_gain>20</tx_baseband_gain>
+    <tx_gain>0</tx_gain>
+    <tx_if_gain>47</tx_if_gain>
+  </simulator_tx_conf>
+  <items>
+    <simulator_message destination_id="broadcast_participant" repeat="1">
+      <message message_type_id="538e2d65-cefc-49d0-9fa3-8ec0d3a29beb" modulator_index="0" pause="0" timestamp="1641209408.2085419" bits="10101010101010101010101010101010111010011100101011101001110010100000101100000000101000000001000100000000000000000000000000000000000000000000000000000100000000000000000000000000" decoding_index="5" participant_id="3f28079e-37e8-46b5-94fc-142e7ec3bd49">
+        <message_type name="RESET" id="538e2d65-cefc-49d0-9fa3-8ec0d3a29beb" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+            <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+            <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+            <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+            <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+            <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+            <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="16777215">
+            <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="16777215">
+            <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+            <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+            <label name="subtype2" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <ruleset mode="0"/>
+        </message_type>
+      </message>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="16777215">
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="16777215">
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+        <label name="subtype2" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+    </simulator_message>
+    <simulator_message destination_id="3f28079e-37e8-46b5-94fc-142e7ec3bd49" repeat="1">
+      <message message_type_id="1b635392-b86e-4e7e-bec6-b55eb1339ccc" modulator_index="0" pause="0" timestamp="1638872584.9437733" bits="10101010101010101010101010101010111010011100101011101001110010100001100100011100101000000000010000110001100011101100000000110011101101000010110011000001000100001001011000110000000101000001000001101101101110011111000101011001001011000000001101110111100000000001011010111111110011010000000000000000" decoding_index="5" participant_id="7956ab72-ed42-4363-a793-08e4f6bdadf4">
+        <message_type name="KEY_EXCHANGE" id="1b635392-b86e-4e7e-bec6-b55eb1339ccc" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+            <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+            <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="255">
+            <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="255">
+            <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="255">
+            <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+            <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="16777215">
+            <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="16777215">
+            <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="340282366920938463463374607431768211455">
+            <label name="key data" start="144" end="272" color_index="20" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+          </simulator_label>
+          <ruleset mode="0"/>
+        </message_type>
+      </message>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="4294967295">
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="255">
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="255">
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="255">
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="0" external_program="" formula="" random_min="0" random_max="255">
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="16777215">
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="16777215">
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+      <simulator_label value_type_index="1" external_program="" formula="" random_min="0" random_max="340282366920938463463374607431768211455">
+        <label name="key data" start="144" end="272" color_index="20" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+      </simulator_label>
+    </simulator_message>
+    <simulator_counter_action start="0" step="1"/>
+    <simulator_rule>
+      <simulator_rule_condition type="IF" condition="item3.counter_value == 2">
+        <simulator_trigger_command_action command="scripts/key_extractor.py" pass_transcript="1"/>
+      </simulator_rule_condition>
+      <simulator_rule_condition type="ELSE" condition="">
+        <simulator_sleep_action sleep_time="0.1"/>
+        <simulator_goto_action goto_target="item2"/>
+      </simulator_rule_condition>
+    </simulator_rule>
+  </items>
+</simulator_config>

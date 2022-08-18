@@ -1,0 +1,422 @@
+<?xml version="1.0" ?>
+<UniversalRadioHackerProject description="" collapse_project_tabs="0" modulation_was_edited="1" broadcast_address_hex="ffff">
+  <modulators>
+    <modulator carrier_freq_hz="5737.3046875" carrier_amplitude="1.0" carrier_phase_deg="0.0" samples_per_symbol="200" name="Modulator" gauss_bt="0.5" gauss_filter_width="1.0" sample_rate="2000000.0" modulation_type="GFSK" index="0" parameters="0.0,31000.0" bits_per_symbol="1"/>
+  </modulators>
+  <device_conf>
+    <adaptive_noise>False</adaptive_noise>
+    <apply_dc_correction>True</apply_dc_correction>
+    <automatic_center>False</automatic_center>
+    <bandwidth>2000000.0</bandwidth>
+    <bias_tee_enabled>False</bias_tee_enabled>
+    <bits_per_symbol>1</bits_per_symbol>
+    <center>-0.0475</center>
+    <center_spacing>0.1</center_spacing>
+    <decoding_name>H0meMatic</decoding_name>
+    <freq_correction>1</freq_correction>
+    <frequency>868300000.0</frequency>
+    <gain>20</gain>
+    <modulation_type>FSK</modulation_type>
+    <name>HackRF</name>
+    <noise>0.9956063479106589</noise>
+    <num_sending_repeats>1</num_sending_repeats>
+    <rx_antenna_index>-1</rx_antenna_index>
+    <rx_baseband_gain>14</rx_baseband_gain>
+    <rx_gain>0</rx_gain>
+    <rx_if_gain>16</rx_if_gain>
+    <sample_rate>2000000.0</sample_rate>
+    <samples_per_symbol>200</samples_per_symbol>
+    <tolerance>4</tolerance>
+    <tx_antenna_index>-1</tx_antenna_index>
+    <tx_baseband_gain>16</tx_baseband_gain>
+    <tx_gain>14</tx_gain>
+    <tx_if_gain>47</tx_if_gain>
+  </device_conf>
+  <simulator_rx_conf>
+    <antenna_index>-1.0</antenna_index>
+    <apply_dc_correction>True</apply_dc_correction>
+    <bandwidth>2000000.0</bandwidth>
+    <baseband_gain>20.0</baseband_gain>
+    <bias_tee_enabled>False</bias_tee_enabled>
+    <center>0.02</center>
+    <decoding_name>Non Return To Zero (NRZ)</decoding_name>
+    <freq_correction>0</freq_correction>
+    <frequency>868300000.0</frequency>
+    <gain>14.0</gain>
+    <if_gain>16.0</if_gain>
+    <modulation_index>1.0</modulation_index>
+    <name>HackRF</name>
+    <noise>1.0</noise>
+    <num_sending_repeats>0</num_sending_repeats>
+    <rx_antenna_index>-1</rx_antenna_index>
+    <rx_baseband_gain>14</rx_baseband_gain>
+    <rx_gain>0</rx_gain>
+    <rx_if_gain>16</rx_if_gain>
+    <sample_rate>2000000.0</sample_rate>
+    <samples_per_symbol>100.0</samples_per_symbol>
+    <tolerance>5.0</tolerance>
+  </simulator_rx_conf>
+  <simulator_tx_conf>
+    <antenna_index>-1.0</antenna_index>
+    <apply_dc_correction>True</apply_dc_correction>
+    <bandwidth>2000000.0</bandwidth>
+    <baseband_gain>22.0</baseband_gain>
+    <bias_tee_enabled>False</bias_tee_enabled>
+    <freq_correction>0</freq_correction>
+    <frequency>868300000.0</frequency>
+    <gain>40.0</gain>
+    <if_gain>33.0</if_gain>
+    <name>HackRF</name>
+    <num_sending_repeats>0</num_sending_repeats>
+    <sample_rate>2000000.0</sample_rate>
+    <tx_antenna_index>-1</tx_antenna_index>
+    <tx_baseband_gain>20</tx_baseband_gain>
+    <tx_gain>14</tx_gain>
+    <tx_if_gain>47</tx_if_gain>
+  </simulator_tx_conf>
+  <group name="New Group" id="0"/>
+  <protocol>
+    <decodings>
+      <decoding>'Non Return To Zero (NRZ)', </decoding>
+      <decoding>'Non Return To Zero Inverted (NRZ-I)', 'Invert', </decoding>
+      <decoding>'Manchester I', 'Edge Trigger', </decoding>
+      <decoding>'Manchester II', 'Edge Trigger', 'Invert', </decoding>
+      <decoding>'Differential Manchester', 'Edge Trigger', 'Differential Encoding', </decoding>
+      <decoding>'H0meMatic', 'Cut before/after', '0;10101010', 'Remove Data Whitening (CC1101)', '0xe9cae9ca;0x21;1', 'External Program', 'scripts/homematic d;scripts/homematic e', </decoding>
+    </decodings>
+    <participants>
+      <participant name="Attacker" shortname="A" address_hex="" color_index="0" id="3f28079e-37e8-46b5-94fc-142e7ec3bd49" relative_rssi="0" simulate="1"/>
+      <participant name="CCU" shortname="C" address_hex="" color_index="1" id="7956ab72-ed42-4363-a793-08e4f6bdadf4" relative_rssi="1" simulate="0"/>
+      <participant name="Device" shortname="D" address_hex="" color_index="2" id="b92bd0da-a493-4ed6-b968-e64bf3e00abe" relative_rssi="2" simulate="0"/>
+    </participants>
+    <messages/>
+    <message_types>
+      <message_type name="Default" id="116c0a6f-6a41-435d-9fa4-882bdcfa8c30" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="M-Frame" id="a260e995-6117-4437-8297-d26dc48fd4c1" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="parameter" start="152" end="168" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="C-Frame" id="5b04992d-9f63-4e57-a9c2-b8340ef90b02" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="challenge" start="152" end="200" color_index="21" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="key number" start="200" end="208" color_index="18" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="data" start="208" end="224" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="R-Frame" id="cbe04fc8-60ca-48f1-a602-240a56328b34" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="payload" start="144" end="272" color_index="24" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="A-Frame" id="4cd4da00-5eeb-409e-ad85-1600ad58cb2b" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="auth" start="152" end="184" color_index="15" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="KEY_EXCHANGE" id="657ac9c8-2289-49e8-a934-b07249c44fec" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="key data" start="144" end="272" color_index="20" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="RESET" id="b4e1c1f5-12f9-4772-9420-2da62e503152" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype2" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="ACK_STATUS" id="119af45d-b7ae-4e65-b2d1-eabfe9bf7501" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="152" end="160" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="status" start="160" end="168" color_index="10" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="UP / DOWN / LOWBAT" start="168" end="176" color_index="11" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="rssi" start="176" end="184" color_index="12" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="SENSOR_EVENT (Shutter contact)" id="eab233c0-9711-429a-bc5a-173a6f04f71e" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="channel / lowat" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="counter" start="152" end="160" color_index="19" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="status" start="160" end="168" color_index="10" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="Burst + REMOTE" id="eecc851b-39f4-4759-a9f1-07700036d945" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="3592" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="3592" end="3624" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="length" start="3624" end="3632" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="3632" end="3640" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="control" start="3640" end="3648" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="3648" end="3656" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="3656" end="3680" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="3680" end="3704" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="button" start="3704" end="3712" color_index="22" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="counter" start="3712" end="3720" color_index="19" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="A-Frame (with ACK-Data)" id="491e93d6-0970-40ac-bb8f-5a21a0d6afb8" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="152" end="160" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="status" start="160" end="168" color_index="10" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="UP / DOWN / LOWBAT" start="168" end="176" color_index="11" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="rssi" start="176" end="184" color_index="12" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="auth" start="184" end="216" color_index="15" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="SET" id="f8589551-0dc0-4c45-a93b-905cdd5e77ea" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="152" end="160" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="status" start="160" end="168" color_index="10" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="SENSOR_EVENT (MOTION)" id="ab000fcb-3649-4f89-af7e-e9de937f7c8e" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="counter" start="152" end="160" color_index="19" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="brightness" start="160" end="168" color_index="10" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="next transmission" start="168" end="176" color_index="12" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="REMOTE" id="5a270280-88ce-43c1-a49f-77207dc7cf96" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="button / long / lowbat" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="counter" start="152" end="160" color_index="19" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="SET (dimmer)" id="69617557-cb77-429b-b414-85a2095fc0d7" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="152" end="160" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="level" start="160" end="168" color_index="10" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="ramp time" start="168" end="176" color_index="11" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="on time" start="176" end="184" color_index="14" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="INFO_ACUTATOR_STATUS" id="6b8063ac-b4ae-4bfe-9699-455c218ad581" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="152" end="160" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="status" start="160" end="168" color_index="10" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="??" start="168" end="176" color_index="20" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="rssi" start="176" end="184" color_index="12" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="??" start="184" end="192" color_index="20" apply_decoding="True" show="2" display_format_index="0" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="CONFIG_START" id="e1526a9f-2613-43ff-8d15-052ac23555ee" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype2" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer adress" start="160" end="184" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer channel" start="184" end="192" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer parameter list" start="192" end="200" color_index="22" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="ACK" id="7a37dd4f-1900-4a6b-85d0-cbd1f303d4cd" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="CONFIG_END" id="9e79f013-1138-4c75-abac-d1d0275a0ffb" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype2" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="CONFIG_WRITE_INDEX (Lock reset button)" id="454ca98a-6f72-45dd-9095-7c5b101f707d" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="adress" start="160" end="168" color_index="18" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="data" start="168" end="224" color_index="24" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="CONFIG_PEER_REMOVE" id="d28c814b-d25a-47e1-8894-b02be72c74e6" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype2" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer adress" start="160" end="184" color_index="10" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer channel a" start="184" end="192" color_index="11" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer channel b" start="192" end="200" color_index="12" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="CONFIG_PEER_LIST_REQ" id="f9e24862-46aa-45a2-9bea-ff4694e72166" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="channel" start="144" end="152" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="subtype 2" start="152" end="160" color_index="16" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+      <message_type name="INFO_PEER_LIST" id="03dd4b2e-a531-45b6-b441-e327e89e87d4" assigned_by_ruleset="0" assigned_by_logic_analyzer="0">
+        <label name="preamble" start="0" end="32" color_index="0" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="synchronization" start="32" end="64" color_index="1" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="length" start="64" end="72" color_index="2" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="sequence number" start="72" end="80" color_index="3" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="control" start="80" end="88" color_index="4" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="type" start="88" end="96" color_index="5" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="source address" start="96" end="120" color_index="6" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="destination address" start="120" end="144" color_index="7" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="0" fuzz_values="" auto_created="False"/>
+        <label name="subtype" start="144" end="152" color_index="8" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer adress" start="152" end="176" color_index="20" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <label name="peer channel" start="176" end="184" color_index="9" apply_decoding="True" show="2" display_format_index="1" display_bit_order_index="0" display_endianness="big" fuzz_me="2" fuzz_values="" auto_created="False"/>
+        <ruleset mode="0"/>
+      </message_type>
+    </message_types>
+  </protocol>
+  <simulator_config>
+    <items/>
+  </simulator_config>
+</UniversalRadioHackerProject>
