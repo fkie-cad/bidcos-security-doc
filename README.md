@@ -3,7 +3,7 @@
 ## doc
 
 The *doc* folder of the repository contains a two-part documentation of the proprietary radio protocol *BidCos*, which was developed by the company [eQ-3](https://www.eq-3.de/start.html) and is used in their smart home product line [HomeMatic](https://www.eq-3.de/produkte/homematic.html).
-The first part deals with the general protocol description of *BidCos*, while the second part describes possible attack vectors and their technical implementation on this protocol.
+The first part deals with the general protocol description of *BidCos*, while the second part describes possible attack vectors and their technical implementation on this protocol. How to perform experiments on different test setups is also described in this [video tutorial](https://youtu.be/ou_yOsTa72E).
 
 > :warning: Since the documentation depends heavily on third party sources, we cannot guarantee its completeness or correctness! Please read the [disclaimer](/doc/1-bidcos.md) carefully!
 
